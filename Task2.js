@@ -265,56 +265,56 @@ console.log(num>=0? "Positive":"Negative");
 
 // section 7 -string & concatenation(61-65)
 //(61Q)
-console.log("Hello"+"World");
+console.log("Hello"+"World");//output is HelloWorld
 
 //(62Q)
 let hello="Hello";
 let world="World";
-console.log(hello+" "+world);
+console.log(hello+" "+world); //output is Hello World
 
 //(63Q)
-console.log(`${hello} ${world}`);
+console.log(`${hello} ${world}`); //output is Hello World
 
 //(64Q)
-console.log("10"+5);
+console.log("10"+5); // output is 105
 
 //(65Q)
-console.log(5+"10");
+console.log(5+"10"); //output is 510
 
 
 
 // section 8-Implicit Type Conversion(66-70)
 //(66Q)
-console.log("5"+2);
+console.log("5"+2); //output is 52
 
 //(67Q)
-console.log("5"-2);
+console.log("5"-2); //output is 3
 
 //(68Q)
-console.log("5"*2);
+console.log("5"*2); //output is 10
 
 //(69Q)
-console.log(true+1);
+console.log(true+1); //output is 2
 
 //(70Q)
-console.log(false+"1");
+console.log(false+"1"); //output is false1
 
 
 // section 9-explicit type conversion(71-75)
 //(71Q)
-console.log(Number("123"));
+console.log(Number("123")); //output is 123
 
 //(72Q)
-console.log(Number("abc"));
+console.log(Number("abc")); //output is NAN
 
 //(73Q)
-console.log(Number(true));
+console.log(Number(true)); //output is 1
 
 //(74Q)
-console.log(Boolean(""));
+console.log(Boolean("")); //output is false
 
 //(75Q)
-console.log(Boolean("hello"));
+console.log(Boolean("hello")); //output is true
 
 //Final rapid Fire Round
 
