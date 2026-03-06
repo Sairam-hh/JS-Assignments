@@ -86,4 +86,4 @@ let Fruit = {
 console.log(Fruit.berries[1]);
 console.log(Fruit.tropical[0]);
 console.log(Fruit.citrus[1]);
-console.log(Fruit);
+console.log(Object.keys(Fruit).length);
