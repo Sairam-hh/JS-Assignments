@@ -406,8 +406,6 @@ let squ=square(6);
 console.log(squ);
 
 
-
-
     
 
 
