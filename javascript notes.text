@@ -1,0 +1,1494 @@
+// // // Thread
+
+// // // Single Thread
+
+// // // scripting
+
+// // // hello
+// // // history
+// // // welcome
+
+// // // Sync 
+
+// // // Async
+
+
+
+
+// // // Variable 
+
+// // // Var     -  global scope
+
+// // // Let     -  block scope 
+
+// // // Const   -  block scope
+
+
+// // // Rules 
+
+
+// // // var - Global scope and Function Scope
+
+
+// // var a = 10    // declration    // Intialiazation
+
+// //     a = 20    // reuse     // reIntialization
+
+// // var a = 30   // reDeclation
+
+
+// // console.log(a)
+
+
+// // // Let - Block Scope
+
+
+// // let b = 10         // declration // Intialization
+
+// //     b = 20         // reuse      // reintialization
+
+// // // let b = 30        // not accept reDeclration
+
+
+
+// // console.log(b);
+
+
+// // // Const - Constant - Block Scope
+
+// // const c = 100            // declration  // Intialization
+
+// //     //   c = 20             // not accept reuse , reInti
+
+// // // const c = 200         // not accept reDeclration
+
+// // console.log(c);
+
+
+
+
+// // // Printing Statement
+
+
+// // // 1. console.log()
+
+// // console.log(1000);
+
+// // let aa = 77
+
+// // console.log(aa);
+
+
+
+
+// // // 2. alert() - pop up stracture - its directly show to value in UI side
+
+
+// // let a1 = 100
+
+// // // alert("hello team this our first class")
+
+
+// // // 3. confirm()
+
+// // // confirm("did you know js?") 
+
+
+// // // 4. prompt()
+
+// // // prompt("what is your name :- ") 
+
+
+// // // 5. document.writeln()
+
+// // // document.writeln("hhjsbdjsabj") 
+
+
+// // // 1. i want to print my name in console side but condition first store my name inside memory and after call that.
+
+// // var name1 = "team28"
+
+// // console.log(name1);
+
+
+
+// // // 2. i want to say good morning user to pop up format
+
+// // // alert("good Morning")
+
+// // // 3. i want ask question to user , the question is :- are you eligible for coming election.
+
+// // // confirm("are you eligible") 
+
+// // // 4. i want to know user age
+
+
+
+// // // let age = prompt("what is your age");
+
+
+
+// // // // 5. i want to print user age in UI side
+
+
+// // // document.writeln(age)
+
+
+
+// // // Console Method 
+
+
+// // // 1. console.log()
+
+// // console.log(100);
+
+
+
+// // // 2. console.warn()
+
+// // console.warn(100);
+
+
+
+// // // 3. console.error()
+
+// // console.error(100);
+
+
+
+// // // 4. console.clear()
+
+// // console.clear()
+
+
+
+
+
+
+// // // DataTypes 
+
+// // // 1 . primitive DataType 
+
+// // // 1. string  - "123","sfdsf"
+
+// // let a2 = "navi"
+
+// // console.log(typeof(a2));
+
+
+// // // 2. number - 1234
+
+// // let a3 = 2232
+
+// // console.log(typeof(a3));
+
+// // // 3. boolean - true - 1  , false - 0
+
+// // let a4 = true
+
+// // console.log(typeof(a4));
+
+
+// // // 4. undefined
+
+// // let a5;
+
+// // console.log(a5);
+
+
+// // // 5. null - 0
+
+// // // let a6 = prompt()
+
+// // // console.log(a6);
+
+
+
+
+
+// // // 2 . Non - primitive DataType
+
+// // // 1. Array - index
+
+// // // syntex - []
+
+// // let fruit = ["banana","apple","orange","guava","pine-apple","cherry","graps-violet","giwi"
+// // ]
+
+// // console.log(fruit);
+// // console.log(fruit[0]);
+// // console.log(fruit[2]);
+// // console.log(fruit[4]);
+
+
+// // console.log(fruit[0]);
+// // // console.log(fruit[fruit.length-1]); // log(fruit[indexNumber])
+
+// // console.log(fruit[fruit.length-1]); // fruit[7]
+
+
+
+// // // 2. object - dot notation
+
+// // // syntex {}
+
+// // let fruit1 = {
+
+// //     redFruit : ["apple", "cherry"] ,
+// //     yellowFruit : ["pineApple","banana"],
+// //     greenFruit : ["guava","giwi"],
+// //     violetFruit : "graps"
+
+// // }
+
+// // console.log(fruit1.violetFruit);
+// // console.log(fruit1.redFruit[0]);
+// // console.log(fruit1.greenFruit[1]);
+
+
+// // console.clear()
+
+
+// // // operators 
+
+// // // 1. Arithmetic operator - methamatical operation
+
+// // // Addition       -  (+)
+
+// // console.log(10 + 20);
+
+
+// // // subraction     -  (-) 
+
+// // console.log(10 - 20);
+
+
+// // // multiplication -  (*)
+
+// // console.log(10 * 20);
+
+
+// // // division     -  (/)
+
+// // console.log(10/20);
+
+
+// // // modulus     - (%)
+
+// // console.log(12 % 200);
+
+
+// // // exponencial - (**)
+
+// // console.log(2**3); // 2^3 = 2*2*2 = 8
+
+
+// // // increament - (++) = +1
+
+// // // 1. pre Increament   = ++var
+
+// // // 2. post Increament  = var++
+
+// // // decreament - (--) = -1
+
+// // // 1. pre Decreament   = --var
+
+// // // 2. post Decreament  = var--
+
+
+
+
+// // let num1 = 2
+
+// // num1++
+
+// // console.log(num1);
+
+
+// // // your searching element , if available in variable side you just calculate that value side only you calculate that variable till only.
+
+
+// // let num2 = 4      // null  
+
+// //     num2 = num2++ // num2 = 4
+
+// //     console.log(num2);
+
+
+// // let num3 = 5      // null
+  
+// //     num3 = ++num3 // ++num3 = ++5 = 6
+
+// //     console.log(num3);
+
+
+
+// //     // your searching Element find in value side , Calculate that value side fully 
+
+// // let num4 = 6     // 
+
+// // let num5 = num4++ // num4 :- 6
+
+// // console.log("num4 :- ",num4); // num4 :- 7
+// // console.log("num5 :- ",num5); // num5 :- 6
+
+
+
+// // let num7 = 2
+
+// // let num8 = --num7 // --num7 = --2 = 1
+
+// // console.log("num7 :- ",num7); // 1
+// // console.log("num8 :- ",num8); // 1
+
+
+
+// // let num9 = 1        // 
+
+// // let num10 = --num9  // 
+
+// // let num11 = ++num10 //
+
+// // console.log("num9 :- ",num9);  // 0
+// // console.log("num10 :- ",num10);// 1
+// // console.log("num11 :- ",num11);// 1
+
+
+// // console.clear()
+
+// // // Assignment operator
+
+
+// // let number1 = 5
+
+// //     number1 = number1 + number1 // 5 + 5 = 10
+
+// //     console.log(number1);
+
+
+// // let number2 = 20
+
+// // let AdditionVal = 100
+
+// //     number2 %= AdditionVal
+    
+// //     // Number2 += AdditionVal
+
+// //     console.log(number2);
+    
+
+
+// //     // Relational or Comparision operator
+
+
+// //     // Meaning           syntex         example         result
+
+// //     // lessThen            <              5 < 5          false
+
+// //     // greaterThen         >              10 > 4         true
+
+// //     // lessThenEq         <=              5 <= 5         true
+
+// //     // greaterThenEq      >=              12 >= 0.12     true
+
+// //     // loosyTypeEq        ==              5 == "5"       true
+
+// //     // loosyNotEq         !=              5 != "5"       false
+
+// //     // strictlyTypeEq     ===             5 === "5"      false
+
+// //     // strictlyNotEq      !==             5 !== "4"      true
+
+
+// //     console.log(5>.5);   //  true
+// //     console.log(4!==4);  //  false
+// //     console.log(5==".5"); // false
+
+
+// //     // Logical operator 
+
+// //     // AND  - &&
+
+// //     // true && true && true = true 
+
+// //     // false && true && true = false 
+
+// //     // false && false && false = false 
+
+// //     // OR   - ||
+
+// //     // true || true || true = true
+
+// //     // false || false || false = false 
+
+// //     // true || false || fasle  = true
+
+// //     // NOT  - !
+
+// //     // !(true) = false
+
+
+// //     // Example 
+
+
+// //     console.log(5===5 && 5>=5 && 3>=.3); // true &&  true && true = true
+
+// //     console.log(!((5==="5" || 6>=.66)&&(2>3 && 8>=74))); // false
+
+// //     // (false || true) = true 
+
+// //     // (false && false) = false
+
+// //     // !(true && false) = !(false) = true 
+    
+
+// //     // Ternary operator
+
+// //     // condition ? statement : statement;
+
+
+// //     5!==5 ? console.log("true") : console.log("false");
+    
+// //     console.clear();
+    
+
+// //     // Concatination (+)
+
+
+// //     let name2 = "iron"
+
+// //     let name3 = "man"
+
+
+// //     console.log(name2 +" hgjdsv "+ name3);
+
+
+// //     // Template String - ``
+
+// //     let name4 = "spider"
+
+// //     let name5 = "man"
+
+// //     console.log(`${name4} ${name5}`);
+
+
+
+// //     // Type Conversion
+
+// //     // Implicit Type Conversion
+
+// //     console.log(typeof("hello" + 1));
+
+
+// //     // string - string anything string
+
+
+// //     console.log(typeof("1" + "1"));
+// //     console.log(typeof("1" + 1));
+// //     console.log(typeof("1" + true));
+// //     console.log(typeof("1" + undefined));
+// //     console.log(typeof("1" + null));
+// //     console.log(typeof("1" + [1,2]));
+// //     console.log(typeof("1" + {k:4}));
+
+// //     // Number
+
+
+// //     console.log(typeof(1 + "1"));
+// //     console.log(typeof(1 + 1));
+// //     console.log(typeof(1 + true));
+// //     console.log(typeof(1 + undefined));
+// //     console.log(typeof(1 + null));
+// //     console.log(typeof(1 + [1,2]));
+// //     console.log(typeof(1 + {a:4}));
+
+// //     // boolean
+
+
+// //     console.log(typeof(true + "1"));
+// //     console.log(typeof(true + 1));
+// //     console.log(typeof(true + true));
+// //     console.log(typeof(true + undefined));
+// //     console.log(typeof(true + null));
+// //     console.log(typeof(true + [1,3]));
+// //     console.log(typeof(true + {j:8}));
+    
+
+// //    console.clear();
+   
+
+// //     // Explicit type Conversion
+
+// //     // Constractor 
+
+// //     // NumberConstractor
+
+// //     console.log(typeof(1 + Number("1")));
+
+// //     console.log(Number());
+// //     console.log(Number(""));
+// //     console.log(Number("123"));
+// //     console.log(Number("abc"));
+// //     console.log(Number(true));
+// //     console.log(Number(false));
+// //     console.log(Number(undefined));
+// //     console.log(Number(null));
+// //     console.log(Number([123,456]));
+// //     console.log(Number({h:9}));
+
+
+// //     // Boolean
+
+// //     console.log(Boolean());
+// //     console.log(Boolean(""));
+// //     console.log(Boolean("123"));
+// //     console.log(Boolean("abc"));
+// //     console.log(Boolean(true));
+// //     console.log(Boolean(false));
+// //     console.log(Boolean(undefined));
+// //     console.log(Boolean(null));
+// //     console.log(Boolean([]));
+// //     console.log(Boolean({}));
+
+
+// // Flow Control Statement 
+
+// // 1 . conditional statement 
+
+
+
+// // if condition
+
+
+// // syntex 
+
+// // if(condition){
+// //     // statement
+// // }
+
+
+// // condition true = allow 
+
+
+// // example 
+
+// if(5===5){
+
+//     console.log("true");
+    
+
+// }
+
+
+
+
+// // if else condition
+
+
+// // syntex 
+
+// // if(condition){
+// //     // statement
+// // }else {
+// //     // statement
+// // }
+
+
+// // condition true = if inside statement work ,
+
+// //           false = else inside statement work
+
+
+// if(-1){
+//     console.log("true");
+    
+// }else{
+//     console.log("false");
+    
+// }
+
+
+
+
+// // else if condition
+
+// // let hour = Number(prompt("enter time now (24hrs)"))
+
+// // console.log(hour);
+
+
+// // if(hour >= 1 && hour <= 6){
+// //     alert("good morning");
+    
+// // }else if(hour >= 7 && hour <= 12){
+// //     alert("morning");
+    
+// // }else if(hour >= 13 && hour <= 16){
+// //     alert("Good afternoon");
+    
+// // }else if(hour >= 17 && hour <= 19){
+// //     console.log("Good Evening");
+    
+// // }else {
+// //     alert("good Night");
+    
+// // }
+
+
+
+// // nested if condition
+
+// // let age = prompt("enter your age")
+// // let height =  prompt("enter your height (cm)")
+// // let weight = prompt("enter your weight (kg) ")
+
+
+// // if(age >= 18){
+
+// //     if(height >= 155){
+
+// //         if(weight >= 55){
+            
+// //             alert("congradulation your eligible ⭐⭐⭐");
+            
+
+
+// //         }else {
+// //             alert(`your weight is :- ${weight} kg only. basic weight 55kg.`);
+            
+// //         }
+
+// //     }else {
+// //         alert(`your height is :- ${height} cm only. bacic height 155cm.`);
+        
+// //     }
+
+// // }else{
+// //     alert(`your age is :- ${age} old only. basic age 18yr`);
+    
+// // }
+
+
+
+// // switch statement
+
+// // syntex :- 
+
+// // switch(condition){
+// //     case  "value" : statement ; break
+// //     case  "value" : statement ; break
+// //     case  "value" : statement ; break
+// //     case  "value" : statement ; break
+// //     case  "value" : statement ; break
+// // }
+
+
+// // example :- 
+
+
+// let trafficLight = "red"
+
+// switch(trafficLight){
+
+//     case "red" : console.log("vechile stop"); break
+//     case "yellow" : console.log("vechile start"); break
+//     case "green" : console.log("vechile go"); break
+
+//     default : console.log("plesent day");
+        
+// }
+
+
+
+
+
+
+// // 2. looping statement
+
+
+// console.log(1);
+// console.log(2);
+// console.log(3);
+// console.log(4);
+// console.log(5);
+
+
+// // for loop 
+
+//     // syntex :- 
+
+//     // for( intialiazation ; condition ; iteration ){
+        
+//     //     // statement
+        
+//     // }
+
+//     for(let a = 1 ; a <= 5 ; a++){
+//         console.log("for loop :- ",a); // 1 2 3 4 5
+//     }
+
+
+//     // a = 1  ; 1 <= 5 = true ; 1++ = 2
+//     // a = 2  ; 2 <= 5 = true ; 2++ = 3
+//     // a = 3  ; 3 <= 5 = true ; 3++ = 4
+//     // a = 4  ; 4 <= 5 = true ; 4++ = 5
+//     // a = 5  ; 5 <= 5 = true ; 5++ = 6
+//     // a = 6  ; 6 <= 5 = false .
+
+//     // 1 to 10 number inside i want to find odd , even number .
+
+
+//     for(let a = 1 ; a <= 10 ; a++){
+//         if (a % 2 == 0) {
+//           console.log(" even :- ", a);
+//         }
+//     }
+
+
+// console.clear();
+
+
+// // while loop 
+
+
+//    // syntex :- 
+
+// //    intialiazation
+
+// //    while(condition){
+// //       // statement 
+
+// //       iteration
+// //    }
+
+
+//  let b = 3
+
+//  while(b >= 10){
+
+//     console.log(b);
+
+//     b--
+
+//  } 
+
+ 
+//  // b = 3 ; 3 >= 0 = true ; 3 ; 3-- = 2
+ 
+//  // b = 2 ; 2 >= 0 = true ; 2 ; 2-- = 1
+ 
+//  // b = 1 ; 1 >= 0 = true ; 1 ; 1-- = 0
+ 
+//  // b = 0 ; 0 >= 0 = true ; 0 ; 0-- = -1 
+ 
+//  // b = -1; -1 >=0 = false .
+
+
+
+// // do while loop 
+
+// // syntex :- 
+
+// // iteration 
+
+// // do{
+//     //     // statement 
+    
+//     //     iteration
+//     // }
+    
+//     // while(condition)
+    
+    
+//     // example :- 
+    
+//     // do while
+    
+//     let a1 = 3           // 3
+    
+//     do{
+//         console.log(a1); // 3
+    
+//         a1--             // 3-- = 2
+        
+//     }
+    
+//     while(a1 >= 0)       // 2 >= 10 = false
+
+
+// // for of loop - string ,array ,function
+
+// let str = "javascript"
+
+// // for of 
+
+// // for(declration of str){
+// //     // statement
+// // }
+
+// for(let a of str){
+
+//     console.log(a);
+    
+// }
+
+
+// let arr = ["apple","banana","orange","graps"]
+
+// for(let b of arr){
+
+//     console.log(b);
+    
+// }
+
+
+// // for in loop - object
+
+
+// let obj = {
+//     name1 : "a",
+//     role  : "developer",
+//     salary: 2000000
+// }
+
+// // syntex 
+
+// // for(declartion in obj){
+
+// //     // statement
+// // }
+
+
+// for(let c in obj) {
+
+//     console.log(obj[c]);
+    
+// }
+
+// console.clear();
+
+
+// // Function - important
+
+
+// // reusable 
+// // block of code
+// // specific task
+
+
+// // syntex 
+
+// // function one(parameter){
+// //     // statement
+// //     // return
+// //     // yeild
+// // }
+
+// // one(argument)
+
+
+// function one(){
+
+//     console.log("hello world");
+
+    
+// }
+
+// one()
+
+// // parameter , argument
+
+// function two(a,b,c,d){
+
+//     console.log(a + d);
+//     console.log(b);
+//     console.log(c);
+//     console.log(d);
+    
+
+// }
+
+// two(10,20,30,40)
+
+
+// // return
+
+
+// function three(){
+//     return 100
+// }
+
+// let newVar = three()
+
+// console.log("three :-",newVar);
+
+// function four(){
+//     console.log("four :-", newVar);
+    
+// }
+
+// four()
+
+
+// function five(a){
+//     return a
+// }
+
+// let a2 = five(200)
+
+// function six(b){
+
+//     console.log(a2 + b);
+    
+
+// }
+// six(30)
+
+
+
+// let obj1 = {
+//     name1 : "john"
+// }
+
+
+// function accessOuterElement(){
+
+//      console.log(obj1.name1);
+     
+// }
+
+// accessOuterElement()
+
+
+
+
+
+// // types of function :- 
+
+
+// // // named function 
+
+// // function named(parameter){
+
+// //     console.log(parameter);
+    
+// // }
+
+// // named("named function")
+
+// // // annoynmous function 
+
+// // let annoynmous = function(parameter){
+
+// //     console.log(parameter);
+    
+// // }
+
+// // annoynmous("annonymous function")
+
+
+
+// // // arrow function
+
+// // let arrow = (parameter)=>{
+
+// //     console.log(parameter);
+    
+// // }
+
+// // arrow("arrow function")
+
+
+
+
+// function form(a,b,c,d,e = "no"){
+//     console.log("name :-",a);
+//     console.log("department :-",b);
+//     console.log("grade :-",c);
+//     console.log("blood grp :-",d);
+//     console.log("disability",e);
+    
+    
+// }
+
+// form("kamal","ece","10","b+ve","yes")
+// form("praveen","ece","9","o+ve")
+
+
+// console.clear();
+
+
+// // scope 
+
+
+// // var     - global scope , function scope
+
+// // let     - block scope
+
+// // const   - block scope
+
+
+
+// function scopeCheck(){
+//     if(true){
+//         var one1 = "global scope"
+//         let two2 = "block scope"
+//         const three3 = "block scope1"
+//         console.log(two2);
+//         console.log(three3);
+//     }
+
+//     console.log(one1);
+    
+    
+    
+// }
+
+// scopeCheck()
+
+
+// // hoisting 
+
+// console.log(a12);
+
+// var a12 = "hello"
+
+
+
+// let b12 = "welcome"
+
+// console.log(b12);
+
+
+// const c12 = "hi"
+
+// console.log(c12);
+
+
+
+
+
+
+// // types of function :- 
+
+
+// // named function 
+// named("named function")
+
+// function named(parameter){
+
+//     console.log(parameter);
+    
+// }
+
+
+// // annoynmous function 
+
+
+// var annoynmous = function(parameter){
+    
+//     console.log(parameter);
+    
+// }
+
+// annoynmous("annonymous function")
+
+
+
+// // arrow function
+
+// var arrow = (parameter)=>{
+    
+//     console.log(parameter);
+    
+// }
+
+// arrow("arrow function")
+
+// console.clear();
+
+
+
+// // Callback function and Higherorder function
+
+
+// function function1(){
+//     console.log("Higherorder function");
+// }
+
+// function function2(){
+//     console.log("callback function");
+    
+// }
+
+
+// function1(function2())
+
+
+// // example 
+
+// function add(callback,a,b){ // callback = sub , a = 20 , b = 40
+//     console.log(a+b);       // 20 + 40 = 60
+//     callback(20,20)         // sub(20,20)
+    
+   
+// }
+
+// function sub(num1,num2){ // n1 = 20 , num2 = 20
+//     console.log(num1-num2); // 20 - 20 = 0
+    
+// }
+
+
+
+// add(sub,20,40)
+
+
+// // 60 , 0 
+
+
+
+// function a(call1,a,b,c){ // call1 = b , a = 1 , b = 2 , c = 3
+
+//     console.log(a+c); // 1 + 3 = 4
+    
+//     call1(a,b)        // b(1,2)
+// }
+
+// let b1 = (a,b)=>{
+
+//     console.log(a+b);
+    
+// }
+
+// a(b1,1,2,3)
+
+
+// // 4 , 3
+
+
+// // currying format / stracture
+
+
+// function a4(a){
+//     return function(b){
+//         return function(c){
+//             console.log(a + b + c);
+            
+//         }
+//     }
+// }
+
+// a4(10)(20)(30)
+
+
+// // IIFE - self invoke function
+
+
+
+// (function (product, discount) {
+//   alert(`now black day sales on going, ${product} offer going on maximum ${discount} % `);
+// })("shirts",50);
+
+
+// Generator function
+
+function* gen(){
+    yield "50% flat offer you got"
+    yield "try again better luck next time"
+    yield "10% flat offer you got"
+    yield "70% flat offer you got"
+    yield "100% cashback"
+}
+
+let genVal = gen()
+
+// console.log(genVal.next().value);
+// console.log(genVal.next().value);
+// console.log(genVal.next().value);
+// console.log(genVal.next().value);
+// console.log(genVal.next().value);
+// console.log(genVal.next());
+
+// for of loop
+
+for(let a of genVal){
+    console.log(a);
+    
+}
+
+
+
+// block of code 
+// repeatation
+// specific task assign
+// code reusable
+// self invoke function
+// easily pass value - dynamic value
+// generator function value
+// callback and higher order function
+// we can set default parameter
+// scopes
+// hoisting
+// outer object we can call in function
+
+console.clear();
+
+
+// Data Stracture - (ES6 Edition) - Ecma Script - 2015
+
+// Spread operator 
+
+// we can take merge value , clone
+
+// Array , object 
+
+// [...] , {...}
+
+
+// Array Spread Operator - [...]
+
+let arr1 = [1,2,3,4]
+let arr2 = [5,6,7,8]
+
+let Total = [...arr1,...arr2,9,10,11,12]
+
+console.log(Total);
+
+// object Spread operator - {...}
+
+let emp1 = {
+    name1 : "a",
+    role  : "trainee",
+    salary : "25000"
+}
+
+let emp2 = {
+    name11 : "b",
+    role1  : "developer",
+    salary1: "40000"
+}
+
+let allDetials = {...emp1,...emp2}
+
+console.log(allDetials);
+
+
+
+// Rest Operator
+
+// we can give multiple argument in single parameter
+
+// function 
+
+// (...)
+
+// example :- 
+
+
+function store(a,b,...c){
+    console.log(a + b + c[0]);
+    console.log(c);
+    
+    
+}
+
+store(1,2,3,4,5,7,8)
+
+console.clear();
+
+
+// Destracture 
+
+// array destratcure
+
+// normal :- 
+
+let arr = [1,2,3,4]
+
+let a1 = arr[0]
+let a2 = arr[1]
+let a3 = arr[2]
+let a4 = arr[3]
+
+console.log(a1 + a4);
+
+// destracture
+
+let [b1,b2,b3,b4] = arr
+
+console.log(b1 + b4);
+
+
+// nested Arr
+
+let nested = [1,2,3,[4,5,[6,7,[8]]]]
+
+let re1 = nested[0]
+let re2 = nested[1]
+let re3 = nested[2]
+let re4 = nested[3][0]
+let re5 = nested[3][1]
+let re6 = nested[3][2][0]
+let re7 = nested[3][2][1]
+let re8 = nested[3][2][2][0]
+
+console.log(re1,re2,re6,re7,re8);
+
+
+let [c1,c2,c3,[c4,c5,[c6,c7,[c8]]]] = nested
+
+console.log(c1,c2,c3,c6,c7,c8);
+
+
+// object deStracture
+
+
+let employee = {
+    name1 : "john",
+    salary : "2000000",
+    role : "developer"
+}
+
+let d1 = employee.name1
+let d2 = employee.salary
+let d3 = employee.role
+
+console.log(d1,d2,d3);
+
+
+
+// destracture 
+
+
+let {name1,salary,role} = employee
+
+console.log(name1,salary,role);
+
+
+console.clear();
+
+// Array Advance Concept 
+
+let array = [1,2,3,4,"hello",true,undefined,null,[1,2,3],{k:1}]
+
+console.log(array);
+console.log(array[0]);
+console.log(array[array.length-1]);
+
+// homogeneous 
+
+// hetrogeneous
+
+// flexible
+
+// Array manipulation
+
+// if your will adding concept , you can add multiple value.
+// if your will remove concept , you can remove only one value.
+
+
+let check = [1,2,3,4]
+
+// pop() - you can remove last value in array
+
+check.pop()
+
+// shift() - you can remove first value in array
+
+check.shift()
+
+// unshift() - you can add first value in array
+
+check.unshift(0,1)
+
+// push()    - you can add last value in array
+
+check.push(4,5,6,7,8,9,10)
+
+console.log(check);
+
+
+// splice(// startingIndex , // DeleteCount , // Adding)
+
+let example = [1,2,3,40,50,6,7,8]
+
+example.splice(3,2,4,5)
+
+console.log(example);
+
+
+// rest operator
+
+// multiple argument store in single parameter
+
+// function
+
+// (...)
+
+
+let arrow1 = (a,b,...c)=>{
+
+    
+    console.log(c);
+    
+    let [f1,f2,f3,f4,f5] = c
+    
+    console.log(a+b + f1 + f5);
+
+
+}
+
+arrow1(1,2,3,4,5,6,7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // 3. function
+
+// // // 4. Date
