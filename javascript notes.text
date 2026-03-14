@@ -1786,6 +1786,263 @@ let str2 = "spider-man"
 
 console.log(str2.split("-"));
 
+console.clear();
+
+
+// Date()
+
+
+let date1 = new Date()
+
+console.log(date1);
+
+// we can get seprate data - (get)
+
+
+// year - getFullYear()
+
+console.log(date1.getFullYear());
+
+
+// date - getDate()
+
+console.log(date1.getDate());
+
+// month - getMonth()
+
+console.log(date1.getMonth());
+
+// day - getDay()
+
+console.log(date1.getDay());
+
+// hour - getHours()
+
+console.log(date1.getHours());
+
+// minutes - getMinutes()
+
+console.log(date1.getMinutes());
+
+// seconds - getSeconds
+
+console.log(date1.getSeconds());
+
+
+// local String
+
+// time
+
+console.log(date1.toLocaleTimeString());
+
+
+// Date
+
+console.log(date1.toLocaleDateString());
+
+
+// date & time 
+
+console.log(date1.toLocaleString());
+
+
+
+console.clear();
+
+
+
+// if you want to manipulate - (set)
+
+
+let date2 = new Date()
+
+console.log(date2);
+
+
+// year change 
+
+date2.setFullYear(2003);
+
+console.log(date2);
+
+
+// date 
+
+date2.setDate(30)
+
+console.log(date2);
+
+// month
+
+date2.setMonth(0)
+
+console.log(date2);
+
+
+// hour
+
+date2.setHours(12)
+
+console.log(date2);
+
+// minutes
+
+date2.setMinutes(12)
+
+console.log(date2);
+
+// seconds 
+
+date2.setSeconds(12)
+
+console.log(date2);
+
+console.clear();
+
+
+
+// Async 
+
+
+// // setTimeout
+
+// setTimeout(()=>{
+
+//     console.log("hello");
+    
+
+// },5000)
+
+// // setTimeIntravel
+
+// let as1 = setInterval(()=>{
+
+//     console.log("welcome");
+    
+
+// },2000)
+
+// setTimeout(()=>{
+
+//     clearInterval(as1)
+
+// },10000)
+
+
+
+function one(){
+    console.log("one");
+    
+}
+
+function two(){
+    console.log("two");
+    
+}
+
+function three(){
+    console.log("three");
+    
+}
+
+one()
+setTimeout(two,0)
+three()
+
+
+
+// Promise 
+
+// we connect to backend
+
+// we can manage API - format - link
+
+
+// Resolve   - successful data - .then()
+
+// Reject    - Error data      - .catch()
+
+// Bending   - Coming data     - .finally()
+
+
+// Api link :- https://jsonplaceholder.typicode.com/todos/1
+
+
+let apiLink = "https://jsonplaceholder.typicode.com/todos/"
+
+// Fetch API
+
+fetch(apiLink).then((data)=>{
+
+    return data.json()
+
+    // json - js = json()
+    // js - json = stringify()
+    
+})
+.then((jsData)=>{
+
+   jsData.forEach((c,i,t)=>{
+
+    console.log(c.title);
+    
+
+   })
+    
+
+})
+.catch((message)=>{
+
+    console.log(message);
+    
+
+})
+.finally((a)=>{
+
+    console.log(a);
+    
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1793,6 +2050,15 @@ console.log(str2.split("-"));
 
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+   
     
     
 
