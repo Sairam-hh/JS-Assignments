@@ -15,9 +15,9 @@ let as1=setInterval(function(){
     console.log(date2.toLocaleTimeString());
     
 })
-setTimeout(()=>{
-    clearInterval(as1)
-},1000);
+// setTimeout(()=>{
+//     clearInterval(as1)
+// },1000);
 
 
 
