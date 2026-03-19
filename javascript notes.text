@@ -1549,12 +1549,10 @@
 
 //     return("map :",c);
    
-    
 
 // })
 
 // console.log(newMap);
-
 
 // // filter()
 
@@ -1999,8 +1997,7 @@ fetch(apiLink).then((data)=>{
 })
 .finally((a)=>{
 
-    console.log(a);
-    
+    console.log(a); 
 
 })
 
@@ -2063,3 +2060,10 @@ fetch(apiLink).then((data)=>{
     
 
 // // // // // // 4. Date
+
+
+
+
+
+
+

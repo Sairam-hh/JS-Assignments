@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>shopping</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f4f8;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #19a53a;
+      color: whitesmoke;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 { font-size: 22px; }
+
+    #cartBtn {
+      background: white;
+      color: #28a745;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #cartBtn:hover { background: #e0ffe0; }
+
+    /* CONTROLS */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 20px;
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .controls input {
+      flex: 1;
+      min-width: 180px;
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .controls select {
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .controls button {
+      padding: 9px 14px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .controls button:hover { background-color: #0056b3; }
+    .controls button.active { background-color: #003f8a; }
+
+    /* MESSAGE */
+    #message {
+      text-align: center;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    #productCount {
+      padding: 8px 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* PRODUCT GRID */
+    #productContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* PRODUCT CARD */
+    .product {
+      width: 220px;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .product:hover { transform: scale(1.03); }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .product .category {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .product h4 {
+      font-size: 13px;
+      color: #333;
+      min-height: 36px;
+    }
+
+    .product .price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .product .rating {
+      font-size: 12px;
+      color: #f5a623;
+    }
+
+    .product .add-btn {
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      background-color: #28a745;
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    .product .add-btn:hover { background-color: #1e7e34; }
+    .product .add-btn.added { background-color: #6c757d; }
+
+    /* MODAL */
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #modal.show { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-box img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    .modal-box h3 { font-size: 16px; color: #333; text-align: center; }
+    .modal-box .m-category { font-size: 11px; color: #888; text-transform: uppercase; text-align: center; }
+    .modal-box .m-price { font-size: 20px; font-weight: bold; color: #28a745; text-align: center; }
+    .modal-box .m-rating { font-size: 13px; color: #f5a623; text-align: center; }
+    .modal-box .m-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    .modal-box .m-add-btn {
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-box .m-add-btn:hover { background: #1e7e34; }
+    .modal-box .m-add-btn.added { background: #6c757d; }
+
+    #closeModal {
+      position: absolute;
+      top: 12px; right: 15px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    #closeModal:hover { color: #333; }
+
+    /* CART SECTION */
+    #cartSection {
+      display: none;
+      padding: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #cartSection h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    #backBtn {
+      padding: 9px 18px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    #backBtn:hover { background: #545b62; }
+
+    .cart-item {
+      background: white;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .cart-item img {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      background: #f9f9f9;
+      border-radius: 6px;
+      padding: 4px;
+    }
+
+    .cart-item-info { flex: 1; }
+    .cart-item-info p { font-size: 13px; color: #333; margin-bottom: 4px; }
+    .cart-item-info span { font-size: 14px; font-weight: bold; color: #28a745; }
+
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-item-qty button {
+      width: 26px;
+      height: 26px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f2f4f8;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .cart-item-qty button:hover { background: #28a745; color: white; }
+    .cart-item-qty span { font-size: 15px; min-width: 20px; text-align: center; }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #dc3545;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover { color: #a71d2a; }
+
+    #cartTotal {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 15px;
+      padding: 10px 0;
+      border-top: 2px solid #ddd;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .controls { flex-direction: column; }
+      .product { width: 160px; }
+      header h1 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>🛍️  RAM'S SHOPPING ZONE</h1>
+    <button id="cartBtn" onclick="showCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+  </header>
+
+  <!-- PRODUCTS PAGE -->
+  <div id="productsPage">
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="🔍 Search title or category..." oninput="applyFilters()"/>
+      <select id="categoryFilter" onchange="applyFilters()">
+        <option value="">All Categories</option>
+        <option value="men's clothing">Men's Clothing</option>
+        <option value="women's clothing">Women's Clothing</option>
+        <option value="electronics">Electronics</option>
+        <option value="jewelery">Jewelry</option>
+      </select>
+      <button id="sortLowBtn" onclick="sortBy('low')">⬆ Low → High</button>
+      <button id="sortHighBtn" onclick="sortBy('high')">⬇ High → Low</button>
+    </div>
+
+    <p id="message">⏳ Loading products...</p>
+    <p id="productCount"></p>
+    <div id="productContainer"></div>
+  </div>
+
+  <!-- CART PAGE -->
+  <div id="cartSection">
+    <button id="backBtn" onclick="showProducts()">← Back to Products</button>
+    <h2>🛒 Your Cart</h2>
+    <div id="cartItems"></div>
+    <p id="cartTotal"></p>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="modal">
+    <div class="modal-box">
+      <button id="closeModal" onclick="closeModal()">✕</button>
+      <img id="mImg" src="" alt=""/>
+      <p class="m-category" id="mCategory"></p>
+      <h3 id="mTitle"></h3>
+      <p class="m-price" id="mPrice"></p>
+      <p class="m-rating" id="mRating"></p>
+      <p class="m-desc" id="mDesc"></p>
+      <button class="m-add-btn" id="mAddBtn" onclick="addFromModal()">+ Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    // ── Variables ──
+    var allProducts = [];
+    var cart = [];
+    var currentSort = "";
+    var selectedProduct = null;
+
+    // ── FETCH ──
+    fetch("https://fakestoreapi.com/products")
+      .then(function(res) {
+        if (!res.ok) {
+          throw new Error("Could not load products. Try again.");
+        }
+        return res.json();
+      })
+      .then(function(data) {
+        allProducts = data;
+        document.getElementById("message").textContent = "";
+        applyFilters();
+      })
+      .catch(function(err) {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").textContent = "❌ Error: " + err.message;
+      });
+
+    // ── FILTER + SEARCH + SORT ──
+    function applyFilters() {
+      var search = document.getElementById("searchInput").value.toLowerCase();
+      var category = document.getElementById("categoryFilter").value;
+
+      var filtered = allProducts.filter(function(p) {
+        var matchTitle    = p.title.toLowerCase().includes(search);
+        var matchCategory = p.category.toLowerCase().includes(search);
+        var matchDrop     = category === "" || p.category === category;
+        return (matchTitle || matchCategory) && matchDrop;
+      });
+
+      if (currentSort === "low") {
+        filtered = filtered.sort(function(a, b) { return a.price - b.price; });
+      } else if (currentSort === "high") {
+        filtered = filtered.sort(function(a, b) { return b.price - a.price; });
+      }
+
+      renderProducts(filtered);
+    }
+
+    // ── SORT ──
+    function sortBy(type) {
+      currentSort = currentSort === type ? "" : type;
+      document.getElementById("sortLowBtn").className  = currentSort === "low"  ? "active" : "";
+      document.getElementById("sortHighBtn").className = currentSort === "high" ? "active" : "";
+      applyFilters();
+    }
+
+    // ── RENDER PRODUCTS ──
+    function renderProducts(products) {
+      document.getElementById("productCount").textContent = "Showing " + products.length + " products";
+
+      if (products.length === 0) {
+        document.getElementById("productContainer").innerHTML =
+          "<p style='text-align:center;color:#888;padding:30px;width:100%'>No products found.</p>";
+        return;
+      }
+
+      document.getElementById("productContainer").innerHTML = products.map(function(p) {
+        var inCart = cart.find(function(c) { return c.id === p.id; });
+        var title  = p.title.length > 50 ? p.title.slice(0, 50) + "..." : p.title;
+        var stars  = "⭐".repeat(Math.round(p.rating.rate));
+
+        return `
+          <div class="product" onclick="openModal(${p.id})">
+            <img src="${p.image}" alt="${title}" />
+            <p class="category">${p.category}</p>
+            <h4>${title}</h4>
+            <p class="price">$${p.price.toFixed(2)}</p>
+            <p class="rating">${stars} ${p.rating.rate} (${p.rating.count} reviews)</p>
+            <button
+              class="add-btn ${inCart ? 'added' : ''}"
+              id="btn-${p.id}"
+              onclick="event.stopPropagation(); addToCart(${p.id})">
+              ${inCart ? "✓ Added" : "+ Add to Cart"}
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // ── OPEN MODAL (Product Detail) ──
+    function openModal(id) {
+      selectedProduct = allProducts.find(function(p) { return p.id === id; });
+      if (!selectedProduct) return;
+
+      document.getElementById("mImg").src          = selectedProduct.image;
+      document.getElementById("mCategory").textContent = selectedProduct.category;
+      document.getElementById("mTitle").textContent    = selectedProduct.title;
+      document.getElementById("mPrice").textContent    = "$" + selectedProduct.price.toFixed(2);
+      document.getElementById("mRating").textContent   =
+        "⭐ " + selectedProduct.rating.rate + " (" + selectedProduct.rating.count + " reviews)";
+      document.getElementById("mDesc").textContent     = selectedProduct.description;
+
+      var inCart = cart.find(function(c) { return c.id === id; });
+      var mBtn   = document.getElementById("mAddBtn");
+      mBtn.textContent = inCart ? "✓ Added" : "+ Add to Cart";
+      mBtn.className   = "m-add-btn" + (inCart ? " added" : "");
+
+      document.getElementById("modal").classList.add("show");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("show");
+      selectedProduct = null;
+    }
+
+    // close modal on background click
+    document.getElementById("modal").addEventListener("click", function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ── ADD FROM MODAL ──
+    function addFromModal() {
+      if (!selectedProduct) return;
+      addToCart(selectedProduct.id);
+      var mBtn = document.getElementById("mAddBtn");
+      mBtn.textContent = "✓ Added";
+      mBtn.className   = "m-add-btn added";
+    }
+
+    // ── ADD TO CART ──
+    function addToCart(id) {
+      var product  = allProducts.find(function(p) { return p.id === id; });
+      var existing = cart.find(function(c) { return c.id === id; });
+
+      if (existing) {
+        existing.qty = existing.qty + 1;
+      } else {
+        cart.push({
+          id:    product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
+          qty:   1
+        });
+      }
+
+      updateCartCount();
+
+      var btn = document.getElementById("btn-" + id);
+      if (btn) {
+        btn.textContent = "✓ Added";
+        btn.className   = "add-btn added";
+      }
+    }
+
+    // ── CART COUNT ──
+    function updateCartCount() {
+      var total = cart.reduce(function(sum, c) { return sum + c.qty; }, 0);
+      document.getElementById("cartCount").textContent = total;
+    }
+
+    // ── SHOW CART ──
+    function showCart() {
+      document.getElementById("productsPage").style.display = "none";
+      document.getElementById("cartSection").style.display  = "block";
+      renderCart();
+    }
+
+    // ── SHOW PRODUCTS ──
+    function showProducts() {
+      document.getElementById("cartSection").style.display  = "none";
+      document.getElementById("productsPage").style.display = "block";
+    }
+
+    // ── RENDER CART ──
+    function renderCart() {
+      var cartItemsEl = document.getElementById("cartItems");
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = "<p style='text-align:center;color:#888;padding:30px;'>🛒 Your cart is empty.</p>";
+        document.getElementById("cartTotal").textContent = "";
+        return;
+      }
+
+      cartItemsEl.innerHTML = cart.map(function(item) {
+        return `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}" />
+            <div class="cart-item-info">
+              <p>${item.title.slice(0, 45)}...</p>
+              <span>$${(item.price * item.qty).toFixed(2)}</span>
+            </div>
+            <div class="cart-item-qty">
+              <button onclick="changeQty(${item.id}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${item.id})">🗑</button>
+          </div>
+        `;
+      }).join("");
+
+      // reduce() — total price
+      var total = cart.reduce(function(sum, item) {
+        return sum + item.price * item.qty;
+      }, 0);
+
+      document.getElementById("cartTotal").textContent = "Total: $" + total.toFixed(2);
+    }
+
+    // ── CHANGE QTY ──
+    function changeQty(id, delta) {
+      var item = cart.find(function(c) { return c.id === id; });
+      if (!item) return;
+      item.qty = item.qty + delta;
+      if (item.qty <= 0) {
+        removeFromCart(id);
+      } else {
+        updateCartCount();
+        renderCart();
+      }
+    }
+
+    // ── REMOVE FROM CART ──
+    function removeFromCart(id) {
+      cart = cart.filter(function(c) { return c.id !== id; });
+      updateCartCount();
+      renderCart();
+      applyFilters();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  margin: 0;
+  font-family: Arial;
+  background: #eaeded;
+}
+
+/* Header */
+.header {
+  background: #131921;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.header button {
+  background: #febd69;
+  border: none;
+  padding: 8px;
+}
+
+/* Controls */
+.controls {
+  background: white;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Product Card */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.price {
+  color: #b12704;
+  font-weight: bold;
+}
+
+.rating {
+  color: #ffa41c;
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  background: #ffd814;
+  border: none;
+  cursor: pointer;
+}
+
+/* Skeleton Animation */
+.skeleton-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.skeleton-img,
+.skeleton-text {
+  background: #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-img {
+  height: 180px;
+}
+
+.skeleton-text {
+  height: 15px;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Error */
+.error {
+  text-align: center;
+  color: red;
+  font-size: 18px;
+}
+
+/* Cart */
+.cart-item {
+  background: white;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.remove {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .header {
+    flex-direction: column;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+  <h2>🛍 PATHMAKANTH ZONE</h2>
+  <div>
+    🛒 Cart: <span id="cartCount">0</span>
+    <a href="cart.html"><button>View Cart</button></a>
+  </div>
+</div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search products...">
+  
+  <selectid="category">
+    <option value="">All Categories</option>
+    <option value="men's clothing">Men</option>
+    <option value="women's clothing">Women</option>
+    <option value="electronics">Electronics</option>
+    <option value="jewelery">Jewelry</option>
+  </selectid=>
+
+  <buttononclick="sortLow()">Low → High</buttononclick=>
+  <buttononclick="sortHigh()">High → Low</buttononclick=>
+</div>
+
+<!-- Skeleton Loader -->
+<div class="products" id="skeleton"></div>
+
+<!-- Error -->
+<div id="error" class="error"></div>
+
+<!-- Products -->
+<div class="products" id="productList"></div>
+
+
+
+
+    <script>
+        let products = [];
+
+// Load Cart Count
+function loadCartCount(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cartCount").innerText = cart.length;
+}
+loadCartCount();
+
+// Show Skeleton
+function showSkeleton(){
+  let html = "";
+
+  for(let i=0; i<8; i++){
+    html += `
+    <div class="skeleton-card">
+      <div class="skeleton-img"></div>
+      <div class="skeleton-text"></div>
+      <div class="skeleton-text"></div>
+      <div class="skeleton-text"></div>
+    </div>`;
+  }
+
+  document.getElementById("skeleton").innerHTML = html;
+}
+
+showSkeleton();
+
+// Fetch API
+fetch("https://fakestoreapi.com/products")
+.then(res => {
+  if(!res.ok) throw new Error("Error");
+  return res.json();
+})
+.then(data => {
+  document.getElementById("skeleton").style.display = "none";
+  products = data;
+  displayProducts(products);
+})
+.catch(err => {
+  document.getElementById("skeleton").style.display = "none";
+  document.getElementById("error").innerText = "❌ Failed to load products!";
+});
+
+// Display Products
+function displayProducts(data){
+  let html = "";
+
+  data.map(p => {
+    html += `
+    <div class="card">
+      <img src="${p.image}">
+      <h4>${p.title.substring(0,50)}</h4>
+      <p class="rating">⭐ ${p.rating.rate}</p>
+      <p class="price">₹ ${p.price}</p>
+      <p>${p.category}</p>
+      <button onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>`;
+  });
+
+  document.getElementById("productList").innerHTML = html;
+}
+
+// Search
+document.getElementById("search").addEventListener("input", function(){
+  let value = this.value.toLowerCase();
+
+  let filtered = products.filter(p =>
+    p.title.toLowerCase().includes(value) ||
+    p.category.toLowerCase().includes(value)
+  );
+
+  displayProducts(filtered);
+});
+
+// Category Filter
+document.getElementById("category").addEventListener("change", function(){
+  let value = this.value;
+
+  if(value === ""){
+    displayProducts(products);
+  } else {
+    let filtered = products.filter(p => p.category === value);
+    displayProducts(filtered);
+  }
+});
+
+// Sorting
+function sortLow(){
+  let sorted = [...products].sort((a,b) => a.price - b.price);
+  displayProducts(sorted);
+}
+
+function sortHigh(){
+  let sorted = [...products].sort((a,b) => b.price - a.price);
+  displayProducts(sorted);
+}
+
+// Add to Cart
+function addToCart(id){
+  let item = products.find(p => p.id === id);
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(c => c.id === id);
+
+  if(existing){
+    existing.qty++;
+  } else {
+    cart.push({...item, qty:1});
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCartCount();
+
+  alert("Added to cart ✅");
+}
+
+    </script>
+    
+</body>
+</html>
